@@ -1,0 +1,20 @@
+version: 2
+sources:
+  - name: retailops_raw
+    schema: public
+    tables:
+      - name: stores
+      - name: sales
+      - name: inventory
+      - name: deliveries
+      - name: issues
+models:
+  - name: mart_store_daily
+    description: "Daily store sales, a stable reporting table for trend charts"
+    columns:
+      - name: store_day_key
+        tests: [unique, not_null]
+      - name: store_id
+        tests: [not_null]
+      - name: sale_date
+        tests: [not_null]
